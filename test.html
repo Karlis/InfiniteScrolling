@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Infinte Scrolling</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/infinite_scroll.js"></script>
+
+    <link rel="shortcut icon" type="image/png" href="js/jasmine/lib/jasmine-2.3.4/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="js/jasmine/lib/jasmine-2.3.4/jasmine.css">
+    <script type="text/javascript" src="js/jasmine/lib/jasmine-2.3.4/jasmine.js"></script>
+    <script type="text/javascript" src="js/jasmine/lib/jasmine-2.3.4/jasmine-html.js"></script>
+    <script type="text/javascript" src="js/jasmine/lib/jasmine-2.3.4/boot.js"></script>
+
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/javascript">
+      $(function() {
+
+        var options = {
+          "maxRows": 50,
+          "threshold": 500,
+          "divId": "container"
+        }
+
+        window.infiniteScroll = new infiniteScroll(options);
+
+          // TESTS -----------------------------------
+        describe("infiniteScroll", function() {
+          it("should increase row count when adding a new item", function() {
+
+            var rows = infiniteScroll.options.rows;
+            infiniteScroll.append()
+            var rowsAfterAppend = infiniteScroll.options.rows;
+            expect(rows).toEqual(rowsAfterAppend - 1);
+          });
+
+          it("should not increase row count over maxRows limit", function() {
+
+            infiniteScroll.options.rows = infiniteScroll.options.maxRows;
+
+            var rows = infiniteScroll.options.rows;
+            infiniteScroll.append()
+            var rowsAfterAppend = infiniteScroll.options.rows;
+            expect(rows).toEqual(rowsAfterAppend);
+          });
+
+          it("should add class 'item' to new items", function() {
+
+            var item = infiniteScroll.createItem();
+            expect(item.hasClass("item")).toBeTruthy();
+          });
+
+
+        });
+      });
+    </script>
+  </body>
+</html>

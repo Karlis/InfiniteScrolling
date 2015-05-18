@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Infinte Scrolling</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/infinite_scroll.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/javascript">
+        $(function() {
+            var options = {
+              "maxRows": 50,
+              "threshold": 500,
+              "divId": "container"
+            }
+            window.infiniteScroll = new infiniteScroll(options);
+        });
+    </script>
+  </body>
+</html>
