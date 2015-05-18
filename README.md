@@ -4,7 +4,8 @@ Creates a scrolling container that adds and removes items dynamically when a cer
 
 ## Options
  * maxRows - maximum items to load
- * threshold - when to add new and remove old items out of view
+ * thresholdTop - when to add new and remove old items out of view at the top
+ * thresholdBottom - when to add new and remove old items out of view at the bottom
  * divId - the id of the scrolling container
 
 
