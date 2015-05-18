@@ -25,7 +25,7 @@
 
     is.prepend = function () {
       var item = is.createItem(is.options.marginTop).prependTo(is.options.selector);
-      is.options.marginTop -= item.height();
+      is.options.marginTop -= (item.height() + parseIntI(item.css("marginBottom").replace("px",'')));
       $(is.options.selector).css({"margin-top": is.options.marginTop });
     };
 
@@ -61,7 +61,7 @@
         var itemTopThreshold = itemPosition - is.options.thresholdBottom;
 
         if (scrollTop > itemBottomThreshold) {
-          is.options.marginTop += height;
+          is.options.marginTop += (height + parseIntI($item.css("marginBottom").replace("px",'')));
           $(is.options.selector).css({"margin-top": is.options.marginTop });
           $item.remove();
 
