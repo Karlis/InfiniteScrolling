@@ -4,7 +4,8 @@
     var is = this;
     is.defaults = {
       maxRows: 50,
-      threshold: 500,
+      thresholdTop: 500,
+      thresholdBottom: 200,
       selector: "#list",
       rows: 0,
       marginTop: 0
@@ -43,8 +44,8 @@
     is.scroll = function () {
       var scrollTop = $(window).scrollTop();
       var scrollBottom = scrollTop + $(window).height();
-      var bottomThreshold = $(document).height() - is.options.threshold;
-      var topThreshold = is.options.marginTop + is.options.threshold;
+      var bottomThreshold = $(document).height() - is.options.thresholdBottom;
+      var topThreshold = is.options.marginTop + is.options.thresholdTop;
 
       if (scrollBottom >= bottomThreshold) {
         is.append();
@@ -56,8 +57,8 @@
         var $item = $(this);
         var height = $item.height();
         var itemPosition = $item.offset().top;
-        var itemBottomThreshold = itemPosition + is.options.threshold + height;
-        var itemTopThreshold = itemPosition - is.options.threshold;
+        var itemBottomThreshold = itemPosition + is.options.thresholdTop + height;
+        var itemTopThreshold = itemPosition - is.options.thresholdBottom;
 
         if (scrollTop > itemBottomThreshold) {
           is.options.marginTop += height;
