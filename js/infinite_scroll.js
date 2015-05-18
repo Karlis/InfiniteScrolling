@@ -77,5 +77,4 @@
     $(window).scroll(is.scroll);
     return is;
   }
-  return infiniteScroll;
 }($, window, document);
